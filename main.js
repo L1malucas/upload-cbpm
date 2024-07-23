@@ -1,7 +1,8 @@
 const { app, Tray, Menu, nativeImage, BrowserWindow, dialog, shell, ipcMain } = require('electron');
 
-let tray
+let tray;
 let browserWindow;
+let selectedPath = ''; // Adicionado para armazenar o caminho selecionado
 
 app.whenReady().then(() => {
   let icon = nativeImage.createFromPath('./src/public/images/favicon.ico');
@@ -10,57 +11,89 @@ app.whenReady().then(() => {
     width: 16
   });
   tray = new Tray(icon);
-  tray.on("click", function () {
-    tray.popUpContextMenu();
-  });
+  
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: 'pastas', type: 'normal', click: () => {
-        dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] })
+      label: "Selecionar Repositório com Arquivos",
+      click: () => {
+        dialog
+          .showOpenDialog({
+            properties: ["openDirectory"],
+          })
+          .then((result) => {
+            if (!result.canceled) {
+              selectedPath = result.filePaths[0];
+              console.log("Selected path:", selectedPath);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       },
     },
     {
-      label: 'Abrir Janela', type: 'normal', click: () => {
+      label: 'Simular Popup', type: 'normal', click: () => {
         dialog.showMessageBox({
           title: 'Aviso',
           message: 'Você clicou no botão de abrir janela'
-        })
+        });
       }
     },
     {
-      label: 'Janela de Histórico', type: 'normal', click: () => {
-        Menu.setApplicationMenu(
-
-        )
+      label: 'Histórico de Transferências', type: 'normal', click: () => {
+        Menu.setApplicationMenu(null);
         browserWindow = new BrowserWindow({
-          frame: false,
           icon: './src/public/images/favicon.ico',
           vibrancy: 'dark',
           darkTheme: true,
-          autoHideMenuBar: true, title: 'Janela de Histórico',
+          autoHideMenuBar: true,
+          title: 'Janela de Histórico',
           width: 1200,
           height: 800,
           webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false // Adicionado para compatibilidade
           }
-        })
-        browserWindow.loadFile('./src/views/index.html')
+        });
+        browserWindow.loadFile('./src/views/index.html');
       }
-    }, { type: 'separator' },
+    }, 
+    { type: 'separator' },
     {
       label: 'Suporte', type: 'normal',
       click: () => {
         shell.openExternal('https://google.com/');
       }
-    }, { type: 'separator' },
-    {
-      label: 'Fechar', type: 'normal', click: () => {
-        app.quit();
-      }
-    }
-  ])
-  tray.setContextMenu(contextMenu)
-  tray.setToolTip('Upload do CBPM')
-  tray.setTitle('BiometricRouter')
+    }, 
+    { type: 'separator' },
+    { role: "quit", label: "Fechar" },
+  ]);
 
-})
+  tray.setContextMenu(contextMenu);
+  tray.setToolTip('Upload do CBPM');
+  tray.setTitle('BiometricRouter');
+
+  //Opção de abrir a tela de histórico ou a tela de seleção de folders
+  //Botões esquerdo e direito
+  // Adicionar evento de clique para abrir o menu de contexto
+  tray.on("click", (event, bounds) => {
+    tray.popUpContextMenu(contextMenu, bounds);
+  });
+
+  // Opcional: evento de clique com botão direito
+  tray.on('right-click', () => {
+    tray.popUpContextMenu(contextMenu);
+  });
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
