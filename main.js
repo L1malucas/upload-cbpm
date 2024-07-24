@@ -1,49 +1,40 @@
-const { app, Tray, Menu, nativeImage, BrowserWindow, dialog, shell, ipcMain } = require('electron');
+const { app, Tray, Menu, nativeImage, BrowserWindow, dialog, shell } = require('electron');
+const path = require('path');
+const fileManager = require('./lib/fileManager');
+const database = require('./lib/database');
 
 let tray;
 let browserWindow;
-let selectedPath = ''; // Adicionado para armazenar o caminho selecionado
+let selectedPath = '';
 
 app.whenReady().then(() => {
-  let icon = nativeImage.createFromPath('./src/public/images/favicon.ico');
-  icon = icon.resize({
-    height: 16,
-    width: 16
-  });
+  let icon = nativeImage.createFromPath(path.join(__dirname, 'src/public/images/favicon.ico'));
+  icon = icon.resize({ height: 16, width: 16 });
   tray = new Tray(icon);
-  
+
   const contextMenu = Menu.buildFromTemplate([
     {
       label: "Selecionar Repositório com Arquivos",
-      click: () => {
-        dialog
-          .showOpenDialog({
-            properties: ["openDirectory"],
-          })
-          .then((result) => {
-            if (!result.canceled) {
-              selectedPath = result.filePaths[0];
-              console.log("Selected path:", selectedPath);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+      click: async () => {
+        const result = await dialog.showOpenDialog({ properties: ["openDirectory"] });
+        if (!result.canceled) {
+          selectedPath = result.filePaths[0];
+          console.log("Selected path:", selectedPath);
+          const filesBase64 = await fileManager.getFilesInDirectoryAsBase64(selectedPath);
+          await database.saveFilesToDatabase(filesBase64);
+        }
       },
     },
     {
       label: 'Simular Popup', type: 'normal', click: () => {
-        dialog.showMessageBox({
-          title: 'Aviso',
-          message: 'Você clicou no botão de abrir janela'
-        });
+        dialog.showMessageBox({ title: 'Aviso', message: 'Você clicou no botão de abrir janela' });
       }
     },
     {
       label: 'Histórico de Transferências', type: 'normal', click: () => {
         Menu.setApplicationMenu(null);
         browserWindow = new BrowserWindow({
-          icon: './src/public/images/favicon.ico',
+          icon: path.join(__dirname, 'src/public/images/favicon.ico'),
           vibrancy: 'dark',
           darkTheme: true,
           autoHideMenuBar: true,
@@ -52,10 +43,10 @@ app.whenReady().then(() => {
           height: 800,
           webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false // Adicionado para compatibilidade
+            contextIsolation: false
           }
         });
-        browserWindow.loadFile('./src/views/index.html');
+        browserWindow.loadFile(path.join(__dirname, 'src/views/index.html'));
       }
     }, 
     { type: 'separator' },
@@ -73,14 +64,10 @@ app.whenReady().then(() => {
   tray.setToolTip('Upload do CBPM');
   tray.setTitle('BiometricRouter');
 
-  //Opção de abrir a tela de histórico ou a tela de seleção de folders
-  //Botões esquerdo e direito
-  // Adicionar evento de clique para abrir o menu de contexto
   tray.on("click", (event, bounds) => {
     tray.popUpContextMenu(contextMenu, bounds);
   });
 
-  // Opcional: evento de clique com botão direito
   tray.on('right-click', () => {
     tray.popUpContextMenu(contextMenu);
   });
