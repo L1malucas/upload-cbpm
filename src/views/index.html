@@ -1,172 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
-  <title>Hello World!</title>
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header id="titlebar">
-    <div id="drag-region">
-
-      <div id="window-title">
-        <span>Electron quick start</span>
+  <div class="container">
+    <h1>Uploads</h1>
+    <div class="stats">
+      <div class="stat">
+        <span>Espaço Utilizado</span>
+        <span>0,00% - 2,77 MB de 100,00 GB</span>
       </div>
-
-      <div id="window-controls">
-
-        <div class="button" id="min-button">
-          <img class="icon"
-            srcset="icons/min-w-10.png 1x, icons/min-w-12.png 1.25x, icons/min-w-15.png 1.5x, icons/min-w-15.png 1.75x, icons/min-w-20.png 2x, icons/min-w-20.png 2.25x, icons/min-w-24.png 2.5x, icons/min-w-30.png 3x, icons/min-w-30.png 3.5x"
-            draggable="false" />
-        </div>
-        <div class="button" id="max-button">
-          <img class="icon"
-            srcset="icons/max-w-10.png 1x, icons/max-w-12.png 1.25x, icons/max-w-15.png 1.5x, icons/max-w-15.png 1.75x, icons/max-w-20.png 2x, icons/max-w-20.png 2.25x, icons/max-w-24.png 2.5x, icons/max-w-30.png 3x, icons/max-w-30.png 3.5x"
-            draggable="false" />
-        </div>
-        <div class="button" id="restore-button">
-          <img class="icon"
-            srcset="icons/restore-w-10.png 1x, icons/restore-w-12.png 1.25x, icons/restore-w-15.png 1.5x, icons/restore-w-15.png 1.75x, icons/restore-w-20.png 2x, icons/restore-w-20.png 2.25x, icons/restore-w-24.png 2.5x, icons/restore-w-30.png 3x, icons/restore-w-30.png 3.5x"
-            draggable="false" />
-        </div>
-        <div class="button" id="close-button">
-          <img class="icon"
-            srcset="icons/close-w-10.png 1x, icons/close-w-12.png 1.25x, icons/close-w-15.png 1.5x, icons/close-w-15.png 1.75x, icons/close-w-20.png 2x, icons/close-w-20.png 2.25x, icons/close-w-24.png 2.5x, icons/close-w-30.png 3x, icons/close-w-30.png 3.5x"
-            draggable="false" />
-        </div>
-
+      <div class="stat">
+        <span>Total de arquivos</span>
+        <span>17 arquivos</span>
+      </div>
+      <div class="stat">
+        <span>Pedidos com arquivos</span>
+        <span>1 Pedido com arquivos</span>
       </div>
     </div>
-  </header>
 
-  <div id="main">
-
-
-    <div class="container">
-
-      <h1>Uploads</h1>
-      <div class="stats">
-        <div class="stat">
-          <span>Space Used</span>
-          <span>0.00% - 2.77 MB of 100.00 GB</span>
-        </div>
-        <div class="stat">
-          <span>Total files</span>
-          <span>17 files</span>
-        </div>
-        <div class="stat">
-          <span>Orders with files</span>
-          <span>1 Order with files</span>
-        </div>
-      </div>
-
-      <div class="filter-bar">
-        <button>Ordered</button>
-        <button>Not Ordered</button>
-        <button class="active">All</button>
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search">
-        <button>Refresh</button>
-        <select>
-          <option>Sort by Date (descending)</option>
-          <!-- Add more sorting options here -->
-        </select>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th><input type="checkbox"></th>
-            <th>File</th>
-            <th>Date</th>
-            <th>Size</th>
-            <th>Product</th>
-            <th>Order</th>
-            <th>Download</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Repeat this <tr> for each file -->
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Artwork Brief.ai</td>
-            <td>Today at 17:33</td>
-            <td>668.18 KB</td>
-            <td>Face Mask - Print your Own</td>
-            <td></td>
-            <td><button class="download">Download</button></td>
-            <td><button class="delete">Delete</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Artwork Brief.ai</td>
-            <td>Today at 17:33</td>
-            <td>668.18 KB</td>
-            <td>Face Mask - Print your Own</td>
-            <td></td>
-            <td><button class="download">Download</button></td>
-            <td><button class="delete">Delete</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Artwork Brief.ai</td>
-            <td>Today at 17:33</td>
-            <td>668.18 KB</td>
-            <td>Face Mask - Print your Own</td>
-            <td></td>
-            <td><button class="download">Download</button></td>
-            <td><button class="delete">Delete</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Artwork Brief.ai</td>
-            <td>Today at 17:33</td>
-            <td>668.18 KB</td>
-            <td>Face Mask - Print your Own</td>
-            <td></td>
-            <td><button class="download">Download</button></td>
-            <td><button class="delete">Delete</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Artwork Brief.ai</td>
-            <td>Today at 17:33</td>
-            <td>668.18 KB</td>
-            <td>Face Mask - Print your Own</td>
-            <td></td>
-            <td><button class="download">Download</button></td>
-            <td><button class="delete">Delete</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Artwork Brief.ai</td>
-            <td>Today at 17:33</td>
-            <td>668.18 KB</td>
-            <td>Face Mask - Print your Own</td>
-            <td></td>
-            <td><button class="download">Download</button></td>
-            <td><button class="delete">Delete</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Artwork Brief.ai</td>
-            <td>Today at 17:33</td>
-            <td>668.18 KB</td>
-            <td>Face Mask - Print your Own</td>
-            <td></td>
-            <td><button class="download">Download</button></td>
-            <td><button class="delete">Delete</button></td>
-          </tr>
-          <!-- Add more rows as needed -->
-        </tbody>
-      </table>
+    <div class="filter-bar">
+      <button>Ordenados</button>
+      <button>Não Ordenados</button>
+      <button class="active">Todos</button>
     </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar">
+      <button>Atualizar</button>
+      <select>
+        <option>Ordenar por Data (decrescente)</option>
+        <!-- Adicione mais opções de ordenação aqui -->
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox">Todos</th>
+          <th class="header-item">Arquivo</th>
+          <th class="header-item">Data</th>
+          <!-- <th class="header-item">Atualizado em</th> -->
+          <th class="header-item">Tamanho</th>
+          <th class="header-item">Pasta</th>
+          <th class="header-item">Baixar</th>
+          <th class="header-item">Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Repetir este <tr> para cada arquivo -->
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Relatório Mensal.pdf</td>
+          <td>Hoje às 15:20</td>
+          <td>200.50 KB</td>
+          <td>Relatórios</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Foto do Produto.jpg</td>
+          <td>Ontem às 10:45</td>
+          <td>2.1 MB</td>
+          <td>Imagens</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Contrato Assinado.docx</td>
+          <td>20/07/2024 às 08:33</td>
+          <td>55.4 KB</td>
+          <td>Documentos</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Apresentação.pptx</td>
+          <td>15/07/2024 às 09:12</td>
+          <td>3.2 MB</td>
+          <td>Apresentações</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Pesquisa de Mercado.xlsx</td>
+          <td>10/07/2024 às 14:55</td>
+          <td>1.8 MB</td>
+          <td>Planilhas</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Manual de Instruções.pdf</td>
+          <td>05/07/2024 às 11:20</td>
+          <td>500 KB</td>
+          <td>Documentos</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Design Gráfico.psd</td>
+          <td>30/06/2024 às 13:45</td>
+          <td>12.3 MB</td>
+          <td>Designs</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Vídeo Promocional.mp4</td>
+          <td>25/06/2024 às 16:00</td>
+          <td>50.7 MB</td>
+          <td>Vídeos</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Dados Financeiros.csv</td>
+          <td>20/06/2024 às 10:30</td>
+          <td>250 KB</td>
+          <td>Finanças</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Apresentação do Projeto.pptx</td>
+          <td>15/06/2024 às 14:10</td>
+          <td>4.5 MB</td>
+          <td>Projetos</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Especificações Técnicas.docx</td>
+          <td>10/06/2024 às 09:40</td>
+          <td>75 KB</td>
+          <td>Documentos</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Logo da Empresa.png</td>
+          <td>05/06/2024 às 12:50</td>
+          <td>1.5 MB</td>
+          <td>Imagens</td>
+          <td><button class="download">Baixar</button></td>
+          <td><button class="delete">Excluir</button></td>
+        </tr>
+        <!-- Repetir este bloco para outros arquivos -->
+      </tbody>
+    </table>
+  </div>
 </body>
 
 </html>

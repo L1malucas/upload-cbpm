@@ -38,7 +38,7 @@ app.whenReady().then(() => {
           vibrancy: 'dark',
           darkTheme: true,
           autoHideMenuBar: true,
-          title: 'Janela de Histórico',
+          title: 'Histórico de Transferências',
           width: 1200,
           height: 800,
           webPreferences: {
@@ -48,14 +48,14 @@ app.whenReady().then(() => {
         });
         browserWindow.loadFile(path.join(__dirname, 'src/views/index.html'));
       }
-    }, 
+    },
     { type: 'separator' },
     {
       label: 'Suporte', type: 'normal',
       click: () => {
         shell.openExternal('https://google.com/');
       }
-    }, 
+    },
     { type: 'separator' },
     { role: "quit", label: "Fechar" },
   ]);
