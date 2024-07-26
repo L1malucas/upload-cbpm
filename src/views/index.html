@@ -45,36 +45,128 @@
   </header>
 
   <div id="main">
-    <h1>Hello World!</h1>
-    <p>
-      Electron version: <span id="electron-ver"></span>
-    </p>
 
 
-    <p>
-      Morbi cursus augue quis nulla tincidunt, ut vulputate libero semper. Nunc suscipit a purus vel bibendum. Nunc
-      rhoncus ante eget elementum finibus. Nulla facilisi. Praesent sed eros rhoncus, molestie eros et, mollis mauris.
-      Fusce non placerat lacus. Sed in iaculis orci, ut congue odio. In nec lacus feugiat, rutrum purus ut, efficitur
-      nunc. Etiam eget augue sed dui ultricies porttitor in nec leo. Quisque dui leo, sollicitudin blandit molestie,
-      posuere eu augue. Phasellus eget risus lobortis, ornare ex nec viverra sapien. Aliquam mi ipsum, eleifend ac odio
-      eleifend, tristique tempus odio. Sed ac id tortor laoreet elementum. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Quisque hendrerit nulla ut libero varius sollicitudin.
-    </p>
-    <p>
-      Morbi cursus augue quis nulla tincidunt, ut vulputate libero semper. Nunc suscipit a purus vel bibendum. Nunc
-      rhoncus ante eget elementum finibus. Nulla facilisi. Praesent sed eros rhoncus, molestie eros et, mollis mauris.
-      Fusce non placerat lacus. Sed in iaculis orci, ut congue odio. In nec lacus feugiat, rutrum purus ut, efficitur
-      nunc. Etiam eget augue sed dui ultricies porttitor in nec leo. Quisque dui leo, sollicitudin blandit molestie,
-      posuere eu augue. Phasellus eget risus lobortis, ornare ex nec viverra sapien. Aliquam mi ipsum, eleifend ac odio
-      eleifend, tristique tempus odio. Sed ac id tortor laoreet elementum. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Quisque hendrerit nulla ut libero varius sollicitudin.
-    </p>
-  </div>
+    <div class="container">
 
-  <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
+      <h1>Uploads</h1>
+      <div class="stats">
+        <div class="stat">
+          <span>Space Used</span>
+          <span>0.00% - 2.77 MB of 100.00 GB</span>
+        </div>
+        <div class="stat">
+          <span>Total files</span>
+          <span>17 files</span>
+        </div>
+        <div class="stat">
+          <span>Orders with files</span>
+          <span>1 Order with files</span>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <button>Ordered</button>
+        <button>Not Ordered</button>
+        <button class="active">All</button>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <button>Refresh</button>
+        <select>
+          <option>Sort by Date (descending)</option>
+          <!-- Add more sorting options here -->
+        </select>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox"></th>
+            <th>File</th>
+            <th>Date</th>
+            <th>Size</th>
+            <th>Product</th>
+            <th>Order</th>
+            <th>Download</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Repeat this <tr> for each file -->
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Artwork Brief.ai</td>
+            <td>Today at 17:33</td>
+            <td>668.18 KB</td>
+            <td>Face Mask - Print your Own</td>
+            <td></td>
+            <td><button class="download">Download</button></td>
+            <td><button class="delete">Delete</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Artwork Brief.ai</td>
+            <td>Today at 17:33</td>
+            <td>668.18 KB</td>
+            <td>Face Mask - Print your Own</td>
+            <td></td>
+            <td><button class="download">Download</button></td>
+            <td><button class="delete">Delete</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Artwork Brief.ai</td>
+            <td>Today at 17:33</td>
+            <td>668.18 KB</td>
+            <td>Face Mask - Print your Own</td>
+            <td></td>
+            <td><button class="download">Download</button></td>
+            <td><button class="delete">Delete</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Artwork Brief.ai</td>
+            <td>Today at 17:33</td>
+            <td>668.18 KB</td>
+            <td>Face Mask - Print your Own</td>
+            <td></td>
+            <td><button class="download">Download</button></td>
+            <td><button class="delete">Delete</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Artwork Brief.ai</td>
+            <td>Today at 17:33</td>
+            <td>668.18 KB</td>
+            <td>Face Mask - Print your Own</td>
+            <td></td>
+            <td><button class="download">Download</button></td>
+            <td><button class="delete">Delete</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Artwork Brief.ai</td>
+            <td>Today at 17:33</td>
+            <td>668.18 KB</td>
+            <td>Face Mask - Print your Own</td>
+            <td></td>
+            <td><button class="download">Download</button></td>
+            <td><button class="delete">Delete</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Artwork Brief.ai</td>
+            <td>Today at 17:33</td>
+            <td>668.18 KB</td>
+            <td>Face Mask - Print your Own</td>
+            <td></td>
+            <td><button class="download">Download</button></td>
+            <td><button class="delete">Delete</button></td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
 </body>
 
 </html>
