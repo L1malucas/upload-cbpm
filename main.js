@@ -48,13 +48,10 @@ app.whenReady().then(() => {
                 );
                 await database.saveFileToDatabase(localPath, ftpUrl);
                 console.log(
-                  `Arquivo ${file} enviado para o FTP e sua Ref salva no MongoDB.`
+                  `Arquivo ${file} enviado para o FTP e seus metadados salvos no MongoDB.`
                 );
               } catch (error) {
-                console.error(
-                  "Erro ao enviar o arquivo para o FTP ou salvar no MongoDB:",
-                  error
-                );
+                console.error("Erro no FTP ou MongoDB:", error);
               }
             }
           });
