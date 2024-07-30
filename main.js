@@ -13,6 +13,7 @@ const fs = require("fs");
 
 const fileManager = require("./lib/fileManager");
 const database = require("./lib/database");
+const { chrome } = require("process");
 
 let tray;
 let browserWindow;
@@ -86,6 +87,8 @@ app.whenReady().then(() => {
             contextIsolation: false,
           },
         });
+        // so pra testes
+        browserWindow.webContents.openDevTools();
         browserWindow.loadFile(path.join(__dirname, "src/views/index.html"));
       },
     },

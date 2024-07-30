@@ -7,25 +7,24 @@
 </head>
 
 <body>
-
   <div class="container">
-    <h1>Uploads</h1>
+    <h1>Histórico de Transferência de Arquivos</h1>
     <div class="stats">
       <div class="stat">
         <span>Espaço Utilizado</span>
-        <span>0,00% - 2,77 MB de 100,00 GB</span>
+        <span id="space-used">0,00% - 0 MB de 100,00 GB</span>
       </div>
       <div class="stat">
         <span>Total de arquivos</span>
-        <span>17 arquivos</span>
+        <span id="total-files">0 arquivos</span>
       </div>
       <div class="stat">
         <span>Pedidos com arquivos</span>
-        <span>1 Pedido com arquivos</span>
+        <span id="orders-with-files">0 Pedido com arquivos</span>
       </div>
       <div class="stat">
         <span>Última Atualização</span>
-        <span>26/07 - 13:19</span>
+        <span id="last-update">--/-- --:--</span>
       </div>
     </div>
 
@@ -50,127 +49,18 @@
           <th><input type="checkbox">Todos</th>
           <th class="header-item">Arquivo</th>
           <th class="header-item">Data</th>
-          <!-- <th class="header-item">Atualizado em</th> -->
           <th class="header-item">Tamanho</th>
           <th class="header-item">Pasta</th>
           <th class="header-item">Baixar</th>
           <th class="header-item">Excluir</th>
         </tr>
       </thead>
-      <tbody>
-        <!-- Repetir este <tr> para cada arquivo -->
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Relatório Mensal.pdf</td>
-          <td>Hoje às 15:20</td>
-          <td>200.50 KB</td>
-          <td>Relatórios</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Foto do Produto.jpg</td>
-          <td>Ontem às 10:45</td>
-          <td>2.1 MB</td>
-          <td>Imagens</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Contrato Assinado.docx</td>
-          <td>20/07/2024 às 08:33</td>
-          <td>55.4 KB</td>
-          <td>Documentos</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Apresentação.pptx</td>
-          <td>15/07/2024 às 09:12</td>
-          <td>3.2 MB</td>
-          <td>Apresentações</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Pesquisa de Mercado.xlsx</td>
-          <td>10/07/2024 às 14:55</td>
-          <td>1.8 MB</td>
-          <td>Planilhas</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Manual de Instruções.pdf</td>
-          <td>05/07/2024 às 11:20</td>
-          <td>500 KB</td>
-          <td>Documentos</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Design Gráfico.psd</td>
-          <td>30/06/2024 às 13:45</td>
-          <td>12.3 MB</td>
-          <td>Designs</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Vídeo Promocional.mp4</td>
-          <td>25/06/2024 às 16:00</td>
-          <td>50.7 MB</td>
-          <td>Vídeos</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Dados Financeiros.csv</td>
-          <td>20/06/2024 às 10:30</td>
-          <td>250 KB</td>
-          <td>Finanças</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Apresentação do Projeto.pptx</td>
-          <td>15/06/2024 às 14:10</td>
-          <td>4.5 MB</td>
-          <td>Projetos</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Especificações Técnicas.docx</td>
-          <td>10/06/2024 às 09:40</td>
-          <td>75 KB</td>
-          <td>Documentos</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Logo da Empresa.png</td>
-          <td>05/06/2024 às 12:50</td>
-          <td>1.5 MB</td>
-          <td>Imagens</td>
-          <td><button class="download">Baixar</button></td>
-          <td><button class="delete">Excluir</button></td>
-        </tr>
-        <!-- Repetir este bloco para outros arquivos -->
+      <tbody id="file-list">
+        <!-- File rows will be inserted here -->
       </tbody>
     </table>
   </div>
+  <script src="renderer.js"></script>
 </body>
 
 </html>
