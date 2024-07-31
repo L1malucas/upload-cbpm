@@ -13,7 +13,10 @@ const fs = require("fs");
 
 const fileManager = require("./lib/fileManager");
 const database = require("./lib/database");
-const { chrome } = require("process");
+const electronReload = require('electron-reload');
+
+
+electronReload(__dirname);
 
 let tray;
 let browserWindow;

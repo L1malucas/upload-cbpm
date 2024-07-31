@@ -8,6 +8,10 @@ const totalFilesElement = document.getElementById('total-files');
 const lastUpdateElement = document.getElementById('last-update');
 const fileListElement = document.getElementById('file-list');
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 fs.readdir(uploadDir, (err, files) => {
   if (err) {
     console.error('Error reading directory:', err);
