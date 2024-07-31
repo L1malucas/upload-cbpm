@@ -10,10 +10,9 @@ const {
 } = require("electron");
 require("dotenv").config();
 const path = require("path");
-const electronReload = require('electron-reload');
+const electronReload = require("electron-reload");
 electronReload(__dirname);
 const { processFilesInDirectory } = require("./lib/fileManager");
-
 
 let tray;
 let browserWindow;
@@ -70,6 +69,9 @@ app.whenReady().then(() => {
 
           try {
             await processFilesInDirectory(selectedPath, selectedPath);
+            console.log(
+              "\n\nProcessamento de upload finalizado com sucesso.\n\n"
+            );
           } catch (error) {
             console.error("Erro ao processar arquivos:", error);
           }
