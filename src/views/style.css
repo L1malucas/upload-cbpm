@@ -93,7 +93,14 @@ p {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.status-transfer {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-end;
+  padding: 10px;
+  color: white;
+  margin-bottom: 20px;
+}
 /* Header styles */
 header {
   display: flex;
