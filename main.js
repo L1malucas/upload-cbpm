@@ -9,10 +9,9 @@ const {
 } = require("electron");
 require("dotenv").config();
 const path = require("path");
-const fs = require("fs");
 
-const fileManager = require("./lib/fileManager");
-const database = require("./lib/database");
+const { processFilesInDirectory } = require("./lib/fileManager");
+
 const { chrome } = require("process");
 
 let tray;
@@ -34,28 +33,12 @@ app.whenReady().then(() => {
         });
         if (!result.canceled) {
           const selectedPath = result.filePaths[0];
-          fs.readdir(selectedPath, async (err, files) => {
-            if (err) {
-              console.error("Erro ao ler a pasta:", err);
-              return;
-            }
-            for (const file of files) {
-              const localPath = path.join(selectedPath, file);
-              const remotePath = `uploads/${file}`;
-              try {
-                const ftpUrl = await fileManager.uploadToFTP(
-                  localPath,
-                  remotePath
-                );
-                await database.saveFileToDatabase(localPath, ftpUrl);
-                console.log(
-                  `Arquivo ${file} enviado para o FTP e seus metadados salvos no MongoDB.`
-                );
-              } catch (error) {
-                console.error("Erro no FTP ou MongoDB:", error);
-              }
-            }
-          });
+
+          try {
+            await processFilesInDirectory(selectedPath, selectedPath);
+          } catch (error) {
+            console.error("Erro ao processar arquivos:", error);
+          }
         }
       },
     },
