@@ -6,16 +6,50 @@ const {
   BrowserWindow,
   dialog,
   shell,
+  ipcMain,
 } = require("electron");
 require("dotenv").config();
 const path = require("path");
 
 const { processFilesInDirectory } = require("./lib/fileManager");
 
-const { chrome } = require("process");
+electronReload(__dirname);
 
 let tray;
 let browserWindow;
+
+async function fetchFilesFromDatabase() {
+  return [
+    {
+      Pasta: "/path/to/folder",
+      NomeArquivo: "file1.txt",
+      Operador: "OPERADOR1",
+      ReferenciaFTP: "ftp://example.com/file1.txt",
+      CamposBusca: ["FILE1", "TXT"],
+      DataUpload: new Date().toISOString(),
+      DataDigitalizacao: new Date().toISOString(),
+      _id: "1",
+    },
+    {
+      Pasta: "/path/to/folder",
+      NomeArquivo: "file1.txt",
+      Operador: "OPERADOR1",
+      ReferenciaFTP: "ftp://example.com/file1.txt",
+      CamposBusca: ["FILE1", "TXT"],
+      DataUpload: new Date().toISOString(),
+      DataDigitalizacao: new Date().toISOString(),
+      _id: "1",
+    },
+  ];
+}
+
+// Função para enviar dados dos arquivos ao renderer
+async function sendFilesToRenderer() {
+  const files = await fetchFilesFromDatabase();
+  if (browserWindow) {
+    browserWindow.webContents.send("files-data", files);
+  }
+}
 
 app.whenReady().then(() => {
   let icon = nativeImage.createFromPath(
@@ -26,7 +60,7 @@ app.whenReady().then(() => {
 
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: "Selecionar Repositório com Arquivos",
+      label: "Selecionar Repositório",
       click: async () => {
         const result = await dialog.showOpenDialog({
           properties: ["openDirectory"],
@@ -42,16 +76,16 @@ app.whenReady().then(() => {
         }
       },
     },
-    {
-      label: "Simular Popup",
-      type: "normal",
-      click: () => {
-        dialog.showMessageBox({
-          title: "Aviso",
-          message: "Você clicou no botão de abrir janela",
-        });
-      },
-    },
+    // {
+    //   label: "Simular Popup",
+    //   type: "normal",
+    //   click: () => {
+    //     dialog.showMessageBox({
+    //       title: "Aviso",
+    //       message: "Você clicou no botão de abrir janela",
+    //     });
+    //   },
+    // },
     {
       label: "Histórico de Transferências",
       type: "normal",
@@ -63,16 +97,18 @@ app.whenReady().then(() => {
           darkTheme: true,
           autoHideMenuBar: true,
           title: "Histórico de Transferências",
-          width: 1200,
+          width: 1280,
           height: 800,
           webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
           },
         });
-        // so pra testes
-        browserWindow.webContents.openDevTools();
+
         browserWindow.loadFile(path.join(__dirname, "src/views/index.html"));
+        browserWindow.webContents.once("did-finish-load", () => {
+          sendFilesToRenderer();
+        });
       },
     },
     { type: "separator" },
@@ -80,7 +116,9 @@ app.whenReady().then(() => {
       label: "Suporte",
       type: "normal",
       click: () => {
-        shell.openExternal("https://google.com/");
+        shell.openExternal(
+          "https://api.whatsapp.com/send/?phone=5571999403953&text=Ol%C3%A1&type=phone_number&app_absent=0"
+        );
       },
     },
     { type: "separator" },

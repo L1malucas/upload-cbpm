@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="status-transfer">
+        <h1>Histórico de Transferência de Arquivos</h1>
+        <div class="stats">
+          <div class="stat">
+            <span>Espaço Utilizado</span>
+            <span id="space-used">0 MB de 100,00 GB</span>
+          </div>
+          <div class="stat">
+            <span>Total de arquivos</span>
+            <span id="total-files">0 arquivos</span>
+          </div>
+          <div class="stat">
+            <span>Última Atualização</span>
+            <span id="last-update">--/-- --:--</span>
+          </div>
+        </div>
+      </div>
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-</head>
+      <div class="filter-bar">
+        <button>Enviados</button>
+        <button>Aguardando</button>
+        <button class="active">Todos</button>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Pesquisar" />
+        <button>Pesquisar</button>
+        <select>
+          <option>Ordenar por Data (decrescente)</option>
+          <!-- Adicione mais opções de ordenação aqui -->
+        </select>
+      </div>
 
-<body>
-  <div class="container">
-    <h1>Histórico de Transferência de Arquivos</h1>
-    <div class="stats">
-      <div class="stat">
-        <span>Espaço Utilizado</span>
-        <span id="space-used">0,00% - 0 MB de 100,00 GB</span>
-      </div>
-      <div class="stat">
-        <span>Total de arquivos</span>
-        <span id="total-files">0 arquivos</span>
-      </div>
-      <div class="stat">
-        <span>Pedidos com arquivos</span>
-        <span id="orders-with-files">0 Pedido com arquivos</span>
-      </div>
-      <div class="stat">
-        <span>Última Atualização</span>
-        <span id="last-update">--/-- --:--</span>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <!-- <th><input type="checkbox" />Todos</th> -->
+            <th class="header-item">Pasta</th>
+            <th class="header-item">Nome do Arquivo</th>
+            <th class="header-item">Operador</th>
+            <th class="header-item">Referência FTP</th>
+            <th class="header-item">Indices</th>
+            <th class="header-item">Upload</th>
+            <th class="header-item">Digitalizado</th>
+            <th class="header-item">Baixar</th>
+            <th class="header-item">Excluir</th>
+          </tr>
+        </thead>
+        <tbody id="file-list">
+          <tr id="no-files-message">
+            <td colspan="9">Nenhum arquivo carregado.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <div class="filter-bar">
-      <button>Enviados</button>
-      <button>Aguardando</button>
-      <button class="active">Todos</button>
-    </div>
-
-    <div class="search-bar">
-      <input type="text" placeholder="Pesquisar">
-      <button>Pesquisar</button>
-      <select>
-        <option>Ordenar por Data (decrescente)</option>
-        <!-- Adicione mais opções de ordenação aqui -->
-      </select>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th><input type="checkbox">Todos</th>
-          <th class="header-item">Arquivo</th>
-          <th class="header-item">Data</th>
-          <th class="header-item">Tamanho</th>
-          <th class="header-item">Pasta</th>
-          <th class="header-item">Baixar</th>
-          <th class="header-item">Excluir</th>
-        </tr>
-      </thead>
-      <tbody id="file-list">
-        <!-- File rows will be inserted here -->
-      </tbody>
-    </table>
-  </div>
-  <script src="renderer.js"></script>
-</body>
-
+    <script src="renderer.js"></script>
+  </body>
 </html>

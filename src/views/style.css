@@ -9,9 +9,11 @@
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
   font-family: "Segoe UI", sans-serif;
-  background: #1a2933;
+  background: #1a2933; /* Mantendo o fundo escuro para contraste */
   color: #fff;
 }
 
@@ -23,7 +25,7 @@ h1 {
 
 p {
   margin-top: 10px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7); /* Levemente mais claro */
 }
 
 /* Titlebar styles */
@@ -35,8 +37,8 @@ p {
   height: 32px;
   width: 100%;
   padding: 4px 8px;
-  background-color: #1a2933;
-  color: #fff;
+  background-color: #1a2933; /* Mantendo para uniformidade */
+  color: #fd7200;
   border-bottom: 1px solid #48545c;
   -webkit-app-region: drag;
 }
@@ -62,39 +64,43 @@ p {
 }
 
 #window-controls .button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(253, 114, 0, 0.1);
 }
 
 #window-controls .button:active {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(253, 114, 0, 0.2);
 }
 
 #min-button {
-  background-color: #33f321;
+  background-color: #fd7200;
 }
 
 #close-button {
-  background-color: #f33a21;
+  background-color: #d14400;
 }
 
 #close-button:hover {
-  background: #e81123;
+  background: #b53900;
 }
 
 #close-button:active {
-  background: #f1707a;
+  background: #a13000;
 }
 
 /* Container styles */
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  margin-top: 40px;
-  background-color: #2e3b4e;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.status-transfer {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-end;
+  padding: 10px;
+  color: white;
+  margin-bottom: 20px;
+}
 /* Header styles */
 header {
   display: flex;
@@ -131,12 +137,13 @@ header {
 }
 
 .filter-bar button {
-  background-color: white;
+  background-color: #fd7200;
+  color: white;
   cursor: pointer;
 }
 
 .filter-bar .active {
-  background-color: #007bff;
+  background-color: #b53900;
   color: white;
 }
 
@@ -145,7 +152,7 @@ header {
 }
 
 .search-bar button {
-  background-color: #007bff;
+  background-color: #fd7200;
   color: white;
   border: none;
   cursor: pointer;
@@ -176,15 +183,15 @@ table th {
 }
 
 .header-item {
-  color: #007bff;
+  color: #fd7200;
 }
 
 .download {
-  background-color: #007bff;
+  background-color: #fd7200;
   color: white;
 }
 
 .delete {
-  background-color: #ff4d4d;
+  background-color: #d14400;
   color: white;
 }
