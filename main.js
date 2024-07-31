@@ -10,10 +10,10 @@ const {
 } = require("electron");
 require("dotenv").config();
 const path = require("path");
-
+const electronReload = require('electron-reload');
+electronReload(__dirname);
 const { processFilesInDirectory } = require("./lib/fileManager");
 
-electronReload(__dirname);
 
 let tray;
 let browserWindow;

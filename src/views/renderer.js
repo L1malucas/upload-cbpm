@@ -5,7 +5,9 @@ const spaceUsedElement = document.getElementById('space-used');
 const totalFilesElement = document.getElementById('total-files');
 const lastUpdateElement = document.getElementById('last-update');
 const fileListElement = document.getElementById('file-list');
-
+if (module.hot) {
+  module.hot.accept();
+}
 ipcRenderer.on('files-data', (event, files) => {
   fileListElement.innerHTML = '';
 
@@ -29,7 +31,7 @@ ipcRenderer.on('files-data', (event, files) => {
 
     fileListElement.appendChild(row);
 
-    totalSize += file.Size; 
+    totalSize += file.Size;
     row.querySelector('.download').addEventListener('click', () => downloadFile(file._id));
     row.querySelector('.delete').addEventListener('click', () => deleteFile(file._id));
   });
