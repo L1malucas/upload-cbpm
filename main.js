@@ -50,6 +50,37 @@ async function sendFilesToRenderer() {
   }
 }
 
+function createTransferHistoryWindow() {
+  if (browserWindow && !browserWindow.isDestroyed()) {
+    browserWindow.focus();
+    return;
+  }
+
+  Menu.setApplicationMenu(null);
+  browserWindow = new BrowserWindow({
+    icon: path.join(__dirname, "src/public/images/favicon.ico"),
+    vibrancy: "dark",
+    darkTheme: true,
+    autoHideMenuBar: true,
+    title: "Histórico de Transferências",
+    width: 1280,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
+
+  browserWindow.loadFile(path.join(__dirname, "src/views/index.html"));
+  browserWindow.webContents.once("did-finish-load", () => {
+    sendFilesToRenderer();
+  });
+
+  browserWindow.on("closed", () => {
+    browserWindow = null;
+  });
+}
+
 app.whenReady().then(() => {
   let icon = nativeImage.createFromPath(
     path.join(__dirname, "src/public/images/favicon.ico")
@@ -91,27 +122,7 @@ app.whenReady().then(() => {
     {
       label: "Histórico de Transferências",
       type: "normal",
-      click: () => {
-        Menu.setApplicationMenu(null);
-        browserWindow = new BrowserWindow({
-          icon: path.join(__dirname, "src/public/images/favicon.ico"),
-          vibrancy: "dark",
-          darkTheme: true,
-          autoHideMenuBar: true,
-          title: "Histórico de Transferências",
-          width: 1280,
-          height: 800,
-          webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false,
-          },
-        });
-
-        browserWindow.loadFile(path.join(__dirname, "src/views/index.html"));
-        browserWindow.webContents.once("did-finish-load", () => {
-          sendFilesToRenderer();
-        });
-      },
+      click: createTransferHistoryWindow,
     },
     { type: "separator" },
     {
@@ -148,6 +159,6 @@ app.on("window-all-closed", () => {
 
 app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+    createTransferHistoryWindow();
   }
 });
