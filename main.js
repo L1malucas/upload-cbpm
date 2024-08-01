@@ -17,29 +17,10 @@ const { processFilesInDirectory } = require("./lib/fileManager");
 let tray;
 let browserWindow;
 
-async function fetchFilesFromDatabase() {
-  return [
-    {
-      Pasta: "/path/to/folder",
-      NomeArquivo: "file1.txt",
-      Operador: "OPERADOR1",
-      ReferenciaFTP: "ftp://example.com/file1.txt",
-      CamposBusca: ["FILE1", "TXT"],
-      DataUpload: new Date().toISOString(),
-      DataDigitalizacao: new Date().toISOString(),
-      _id: "1",
-    },
-    {
-      Pasta: "/path/to/folder",
-      NomeArquivo: "file1.txt",
-      Operador: "OPERADOR1",
-      ReferenciaFTP: "ftp://example.com/file1.txt",
-      CamposBusca: ["FILE1", "TXT"],
-      DataUpload: new Date().toISOString(),
-      DataDigitalizacao: new Date().toISOString(),
-      _id: "1",
-    },
-  ];
+global.historyFiles = [];
+
+function fetchFilesFromDatabase() {
+  return global.historyFiles;
 }
 
 // Função para enviar dados dos arquivos ao renderer
