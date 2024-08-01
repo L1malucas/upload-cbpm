@@ -102,7 +102,23 @@ Exemplo de arquivos antes do processamento.
 
 ## Fluxo de Execução
 
-Exemplo de arquivos após o processamento.
+Arquivos processados salvos no servidor FTP.
+
+![w:600px center](./img/fluxo_execucao05.png)
+
+---
+
+## Fluxo de Execução
+
+Metadados dos arquivos salvos no banco de dados (MongoDB).
+
+![w:400px center](./img/fluxo_execucao06.png)
+
+---
+
+## Fluxo de Execução
+
+O sistema faz a marcação dos arquivos "locais" processados, adicionando um prefixo no nome do arquivo.
 
 ![w:600px center](./img/fluxo_execucao04.png)
 
