@@ -53,16 +53,6 @@ Este documento tem como objetivo apresentar o sistema de upload de arquivos da C
 
 ---
 
-## Tecnologias Utilizadas
-
-- Electron
-- Node.js
-- MongoDB
-- Prisma ORM
-- Dotenv
-
----
-
 ## Fluxo de Execução
 
 1. O ***usuário*** seleciona a pasta que deseja fazer o upload dos arquivos.
@@ -104,7 +94,7 @@ Exemplo de arquivos antes do processamento.
 
 Arquivos processados salvos no servidor FTP.
 
-![w:600px center](./img/fluxo_execucao05.png)
+![w:550px center](./img/fluxo_execucao05.png)
 
 ---
 
@@ -124,4 +114,86 @@ O sistema faz a marcação dos arquivos "locais" processados, adicionando um pre
 
 ---
 
-## Dúvidas❓❓❓
+## Tecnologias Utilizadas
+
+- Electron
+- Node.js
+- MongoDB
+- Prisma ORM
+- Dotenv
+
+---
+
+## Electron
+
+```js
+tray = new Tray(icon);
+...
+{
+      label: "Selecionar Repositório",
+      click: async () => {
+        const result = await dialog.showOpenDialog({
+          properties: ["openDirectory"],
+        });
+          try {
+            await processFilesInDirectory(selectedPath, selectedPath);
+            const processDuration = (endTotal - startTotal) / 1000;
+          }
+        }
+      },
+```
+
+---
+
+## Prisma ORM - Schema
+
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Arquivos {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  Pasta             String
+  CamposBusca       String[]
+  DataUpload        DateTime
+
+  @@index([Pasta], name: "idx_Pasta")
+}
+```
+
+---
+
+## Prisma ORM - Conexão
+
+```js
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
+
+await prisma.arquivos.create({
+      data: fileData,
+});
+
+```
+
+---
+
+## Dotenv
+
+```js
+FTP_HOST=localhost
+FTP_PORT=2122
+FTP_USER=ftpuser
+FTP_PASSWORD=ftppassword
+DATABASE_URL="mongodb://localhost:27017/dbName?replicaSet=rsName"
+```
+
+---
+
+## Dúvidas
