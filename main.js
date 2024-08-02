@@ -12,6 +12,9 @@ require("dotenv").config();
 const path = require("path");
 const electronReload = require("electron-reload");
 electronReload(__dirname);
+
+const { performance } = require("perf_hooks");
+
 const { processFilesInDirectory } = require("./lib/fileManager");
 
 let tray;
@@ -80,9 +83,15 @@ app.whenReady().then(() => {
           const selectedPath = result.filePaths[0];
 
           try {
+            const startTotal = performance.now();
+
             await processFilesInDirectory(selectedPath, selectedPath);
+
+            const endTotal = performance.now();
+            const processDuration = (endTotal - startTotal) / 1000;
             console.log(
-              "\n\nProcessamento de upload finalizado com sucesso.\n\n"
+              `Processamento realizado com sucesso em: 
+              ${processDuration.toFixed(2)} segundos`
             );
           } catch (error) {
             console.error("Erro ao processar arquivos:", error);
